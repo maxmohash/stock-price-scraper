@@ -18,14 +18,16 @@ def get_stock_price():
     try:
         print "Attempt to gather price data for ticker symbols"
         for ticker in tickerArr:
-            htmlfile = urllib.urlopen(BASE_URL + ticker)
-            htmltext = htmlfile.read()
+            try:
+                htmlfile = urllib.urlopen(BASE_URL + ticker)
+                htmltext = htmlfile.read()
 
-            soup = BeautifulSoup(htmltext, 'html.parser')
-            market_data = soup.find('span', attrs={'class' : 'pr'})
-            stock_price = market_data.text.strip()
-
-            print ticker,": $",stock_price
+                soup = BeautifulSoup(htmltext, 'html.parser')
+                market_data = soup.find('span', attrs={'class' : 'pr'})
+                stock_price = market_data.text.strip()
+                print ticker,": $",stock_price
+            except:
+                print("Stock price not found" + ticker)
     except Exception, e:
         print str(e)
         print 'Error occured in returning stock price. Please ensure the ticker symbol is correct'

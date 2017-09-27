@@ -16,7 +16,7 @@ def get_stock_price():
     page and returns stock price for each symbol
     """
     try:
-        print "Attempt to gather price data for ticker symbols"
+        print "Attempting to gather price data for ticker symbols check below \n"
         for ticker in tickerArr:
             try:
                 htmlfile = urllib.urlopen(BASE_URL + ticker)
@@ -24,8 +24,9 @@ def get_stock_price():
 
                 soup = BeautifulSoup(htmltext, 'html.parser')
                 market_data = soup.find('span', attrs={'class' : 'pr'})
+                price_fluctuation = soup.find('span', attrs={'class' : 'chg'})
                 stock_price = market_data.text.strip()
-                print ticker,": $",stock_price
+                print ticker,": $",stock_price, "Price Fluctuation: $",price_fluctuation.text.strip()
             except:
                 print("Stock price not found" + ticker)
     except Exception, e:

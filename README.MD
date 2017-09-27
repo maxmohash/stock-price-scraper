@@ -7,14 +7,20 @@ it in the terminal
 ## Usage
 Clone the repo, update the ticker.txt with all the stock symbols and run the script in the terminal
 
-For example:
+Install requirements in terminal just run:
+
+```make install_requirements```
+
+Then run the scraper:
 
 ```python scraper.py```
 
 Example output:
+
 ```
-AAPL : $ 121.63
-F : $ 12.37
-VTI : $ 117.36
-BAC : $ 22.95
+Z : $ 39.18 Price Fluctuation: $ +0.16
+AAPL : $ 154.23 Price Fluctuation: $ +1.09
+C : $ 72.28 Price Fluctuation: $ +1.34
+BAC : $ 25.41 Price Fluctuation: $ +0.60
+F : $ 11.95 Price Fluctuation: $ +0.02
 ```

@@ -26,9 +26,12 @@ def get_stock_price():
                 market_data = soup.find('span', attrs={'class' : 'pr'})
                 price_fluctuation = soup.find('span', attrs={'class' : 'chg'})
                 stock_price = market_data.text.strip()
-                print ticker,": $",stock_price, "Price Fluctuation: $",price_fluctuation.text.strip()
+                if price_fluctuation is None:
+                    print ticker, ": $", stock_price
+                else:
+                    print ticker, ": $", stock_price, "Price Fluctuation: $", price_fluctuation.text.strip()
             except:
-                print("Stock price not found" + ticker)
+                print("Stock price not found " + ticker)
     except Exception, e:
         print str(e)
         print 'Error occured in returning stock price. Please ensure the ticker symbol is correct'
